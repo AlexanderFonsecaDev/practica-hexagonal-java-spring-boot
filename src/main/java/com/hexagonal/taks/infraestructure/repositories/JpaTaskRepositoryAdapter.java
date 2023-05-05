@@ -3,11 +3,13 @@ package com.hexagonal.taks.infraestructure.repositories;
 import com.hexagonal.taks.domain.models.Task;
 import com.hexagonal.taks.domain.ports.out.TaskRepositoryPort;
 import com.hexagonal.taks.infraestructure.entities.TaskEntity;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Component
 public class JpaTaskRepositoryAdapter implements TaskRepositoryPort {
 
     private final JpaTaskRepository jpaTaskRepository;

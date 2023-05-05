@@ -5,6 +5,7 @@ import com.hexagonal.taks.application.usecases.*;
 import com.hexagonal.taks.domain.ports.in.GetAdditionalTaskInfoUseCase;
 import com.hexagonal.taks.domain.ports.out.ExternalServicePort;
 import com.hexagonal.taks.domain.ports.out.TaskRepositoryPort;
+import com.hexagonal.taks.infraestructure.adapters.ExternalServiceAdapter;
 import com.hexagonal.taks.infraestructure.repositories.JpaTaskRepositoryAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +32,11 @@ public class ApplicationConfig {
     @Bean
     public GetAdditionalTaskInfoUseCase getAdditionalTaskInfoUseCase(ExternalServicePort externalServicePort){
         return new GetAdditionalTaskInfoUseCaseImpl(externalServicePort);
+    }
+
+    @Bean
+    public ExternalServicePort externalServicePort(){
+        return new ExternalServiceAdapter();
     }
 
 }
